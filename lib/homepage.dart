@@ -2,26 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:windows10_1990/res/colors.dart';
 import 'package:windows10_1990/responsivewidget.dart';
+import 'package:windows10_1990/widgets/calculator.dart';
 import 'package:windows10_1990/widgets/clippy.dart';
 import 'package:windows10_1990/widgets/msdos.dart';
+import 'package:windows10_1990/widgets/mspaint.dart';
+import 'package:windows10_1990/widgets/notepad.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
 bool viewClippy = false;
 bool logoBack = false;
 bool viewMenu = false;
 bool mypc = false;
-
-List<bool> viewBools = [
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-  false,
-];
+bool dosView = false;
 
 class HomePage extends StatefulWidget {
   @override
@@ -53,7 +45,6 @@ class _HomePageState extends State<HomePage> {
                     width: screenWidth,
                     height: screenHeight - 40.0,
                     child: GestureDetector(
-                      
                       onTap: () {
                         setState(() {
                           viewClippy = false;
@@ -78,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     child: mycomputer(),
                   ),
                 ),
-                
+
                 //start menu
                 Visibility(
                   visible: viewMenu,
@@ -95,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 //clippy
                 Visibility(
-                  visible: viewClippy ? true : false,
+                  visible: viewClippy,
                   child: Positioned(
                     top: screenHeight * 0.4,
                     left: 40.0,
@@ -107,13 +98,39 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                //calculator
+                Positioned(
+                  child: Visibility(
+                    visible: viewBools[2],
+                    child: Calculator(),),
+                ),
+                //notepad
+                Positioned(
+                  top: screenHeight*0.2,
+                  left: screenWidth*0.3,
+                  child: Visibility(
+                    visible: viewBools[4],
+                    child: Notepad(),
+                  ),
+                ),
+                //paint
+                Positioned(
+                  top: screenHeight * 0.1,
+                  left: screenWidth*0.3,
+                  child: Visibility(
+                    visible: viewBools[7],
+                    child: MSPaint(),
+                  ),
+                ),
                 //MsDos
                 Visibility(
                   visible: viewBools[1],
                   child: Positioned(
                     top: screenHeight * 0.2,
-                  left: screenWidth * 0.2,
-                    child: MSDos(),),),
+                    left: screenWidth * 0.2,
+                    child: MSDos(),
+                  ),
+                ),
 
                 //bottom bar
                 Positioned(
@@ -220,7 +237,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                
               ],
             )),
       ),

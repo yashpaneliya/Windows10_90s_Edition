@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:windows10_1990/homepage.dart';
 
+List<bool> viewBools = [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+];
+
 class StartMenu extends StatefulWidget {
   final width;
   final height;
@@ -72,10 +84,11 @@ class _StartMenuState extends State<StartMenu> {
                 return InkWell(
                   onTap: () {
                     setState(() {
-                      viewClippy = true;
+                      viewClippy = false;
                       viewMenu = false;
                       for (int i = 0; i < viewBools.length; i++)
                         viewBools[i] = false;
+                      
                       viewBools[index] = true;
                     });
                   },
