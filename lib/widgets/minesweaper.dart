@@ -186,8 +186,7 @@ class _MinesweaperState extends State<Minesweaper> {
           color: Colors.black,
           border: Border.all(width: 3.0, color: normalgrey),
           boxShadow: [BoxShadow(color: Colors.black, offset: Offset(2, 2))]),
-      child: TextField(
-        
+      child: TextField(        
         cursorColor: Colors.black,
         textDirection: TextDirection.rtl,
         controller: tc,

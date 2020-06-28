@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:windows10_1990/res/colors.dart';
 import 'package:windows10_1990/responsivewidget.dart';
+import 'package:windows10_1990/widgets/browser.dart';
 import 'package:windows10_1990/widgets/calculator.dart';
 import 'package:windows10_1990/widgets/clippy.dart';
+import 'package:windows10_1990/widgets/minesweaper.dart';
 import 'package:windows10_1990/widgets/msdos.dart';
 import 'package:windows10_1990/widgets/mspaint.dart';
+import 'package:windows10_1990/widgets/myComputer.dart';
 import 'package:windows10_1990/widgets/notepad.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
@@ -98,16 +101,35 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                //edge
+                Positioned(
+                  top: screenHeight * 0.2,
+                  left: screenWidth * 0.3,
+                  child: Visibility(
+                    visible: viewBools[0],
+                    child: Browser(),
+                  ),
+                ),
+                //minesweaper
+                Positioned(
+                  top: screenHeight * 0.2,
+                  left: screenWidth * 0.3,
+                  child: Visibility(
+                    visible: viewBools[3],
+                    child: Minesweaper(),
+                  ),
+                ),
                 //calculator
                 Positioned(
                   child: Visibility(
                     visible: viewBools[2],
-                    child: Calculator(),),
+                    child: Calculator(),
+                  ),
                 ),
                 //notepad
                 Positioned(
-                  top: screenHeight*0.2,
-                  left: screenWidth*0.3,
+                  top: screenHeight * 0.2,
+                  left: screenWidth * 0.3,
                   child: Visibility(
                     visible: viewBools[4],
                     child: Notepad(),
@@ -116,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                 //paint
                 Positioned(
                   top: screenHeight * 0.1,
-                  left: screenWidth*0.3,
+                  left: screenWidth * 0.3,
                   child: Visibility(
                     visible: viewBools[7],
                     child: MSPaint(),
@@ -131,7 +153,15 @@ class _HomePageState extends State<HomePage> {
                     child: MSDos(),
                   ),
                 ),
-
+                //MyCOmputer
+                Positioned(
+                  top:0,
+                  left: 0,
+                  child: Visibility(
+                    visible: mypc,
+                    child: MyComp(),
+                  ),
+                ),
                 //bottom bar
                 Positioned(
                   top: screenHeight - 40.0,
@@ -237,6 +267,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                
               ],
             )),
       ),
