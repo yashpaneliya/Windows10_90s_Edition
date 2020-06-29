@@ -63,7 +63,7 @@ class _ForthRowState extends State<ForthRow> {
             children: [
               Container(
                 height: 25,
-                width: 1355,
+                width: 1345,
                 decoration: BoxDecoration(
                     border: Border.all(
                   color: Colors.grey[200],

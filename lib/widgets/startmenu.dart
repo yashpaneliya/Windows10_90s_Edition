@@ -55,17 +55,17 @@ class _StartMenuState extends State<StartMenu> {
     'Documents',
     'Settings',
     'Help',
-    'Syatem Information',
-    'About'
+    'System Information',
+    'Shut Down'
   ];
 
   List<IconData> secondIcons = [
     Icons.menu,
-    Icons.file_upload,
+    Icons.pages,
     Icons.settings,
     Icons.help,
     Icons.info_outline,
-    Icons.developer_mode
+    Icons.power
   ];
 
   @override

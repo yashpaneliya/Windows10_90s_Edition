@@ -6,6 +6,7 @@ void main(){
     debugShowCheckedModeBanner: false,
     title: 'Windows 10 1990 Edition',
     home: SplashScreen(),
+    theme: ThemeData(fontFamily: 'Microsoft Sans Serif'),
   ));
 }
 
