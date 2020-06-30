@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:windows10_1990/homepage.dart';
+import 'package:windows10_1990/widgets/properties.dart';
 
 List<bool> viewBools = [
   false,
@@ -88,7 +89,7 @@ class _StartMenuState extends State<StartMenu> {
                       viewMenu = false;
                       for (int i = 0; i < viewBools.length; i++)
                         viewBools[i] = false;
-                      
+
                       viewBools[index] = true;
                     });
                   },
@@ -121,6 +122,13 @@ class _StartMenuState extends State<StartMenu> {
             itemCount: 6,
             itemBuilder: (context, index) {
               return ListTile(
+                onTap: () {
+                  setState(() {
+                    viewMenu = false;
+                    viewClippy = false;
+                    proview = true;
+                  });
+                },
                 leading: Icon(
                   secondIcons[index],
                   color: Colors.white,

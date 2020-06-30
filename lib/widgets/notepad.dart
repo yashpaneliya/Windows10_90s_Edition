@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:windows10_1990/widgets/startmenu.dart';
 
 class Notepad extends StatefulWidget {
   @override
@@ -136,6 +137,7 @@ class _NotepadState extends State<Notepad> {
                       formatState = false;
                       viewState = false;
                       helpState = false;
+                      viewBools[4]=false;
                     });
                   },
                 ),

@@ -10,6 +10,7 @@ import 'package:windows10_1990/widgets/msdos.dart';
 import 'package:windows10_1990/widgets/mspaint.dart';
 import 'package:windows10_1990/widgets/myComputer.dart';
 import 'package:windows10_1990/widgets/notepad.dart';
+import 'package:windows10_1990/widgets/properties.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
 bool viewClippy = false;
@@ -160,6 +161,15 @@ class _HomePageState extends State<HomePage> {
                   child: Visibility(
                     visible: mypc,
                     child: MyComp(),
+                  ),
+                ),
+                //properties
+              Positioned(
+                  top:0,
+                  left: 0,
+                  child: Visibility(
+                    visible: proview,
+                    child: Properties(),
                   ),
                 ),
                 //bottom bar
