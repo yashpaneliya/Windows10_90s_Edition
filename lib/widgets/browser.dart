@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:windows10_1990/main.dart';
 import 'package:windows10_1990/widgets/msdos.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
@@ -10,23 +11,27 @@ class Browser extends StatefulWidget {
 class _BrowserState extends State<Browser> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        height: 520,
-        width: 600,
-        color: Color.fromRGBO(191, 189, 189, 1),
-        child: Column(
-          children: <Widget>[
-            _buildHeader(),
-            SizedBox(
-              height: 10,
-            ),
-            _buildMenu(),
-            SizedBox(
-              height: 15,
-            ),
-            _buildBody(),
-          ],
+    print("ViewBools[0] : ${viewBools[0]}");
+    return Visibility(
+      visible: viewBools[0],
+      child: Center(
+        child: Container(
+          height: 520,
+          width: 600,
+          color: Color.fromRGBO(191, 189, 189, 1),
+          child: Column(
+            children: <Widget>[
+              _buildHeader(),
+              SizedBox(
+                height: 10,
+              ),
+              _buildMenu(),
+              SizedBox(
+                height: 15,
+              ),
+              _buildBody(),
+            ],
+          ),
         ),
       ),
     );
@@ -51,24 +56,23 @@ class _BrowserState extends State<Browser> {
               width: 270,
             ),
             Container(
-                  child: Row(
-                    children: [
-                      EssentialButton(
-                        icon: Icons.minimize,
-                        onpressed: () {},
-                      ),
-                      EssentialButton(
-                          icon: Icons.crop_square, onpressed: () {}),
-                      EssentialButton(
-                        icon: Icons.close,
-                        onpressed: () {
-                          setState(() {
-                            viewBools[0] = false;
-                          });
-                        },
-                      )
-                    ],
+              child: Row(
+                children: [
+                  EssentialButton(
+                    icon: Icons.minimize,
+                    onpressed: () {},
                   ),
+                  EssentialButton(icon: Icons.crop_square, onpressed: () {}),
+                  EssentialButton(
+                    icon: Icons.close,
+                    onpressed: () {
+                      setState(() {
+                        viewBools[0] = false;
+                      });
+                    },
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -196,7 +200,7 @@ class _BrowserState extends State<Browser> {
             children: <Widget>[
               Container(
                 width: 50.0,
-          height: 50.0,
+                height: 50.0,
                 child: Image.asset(
                   'edge.png',
                   scale: 3,

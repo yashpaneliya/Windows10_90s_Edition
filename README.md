@@ -16,7 +16,7 @@ If you like this project then give it a ⭐
 
 ## Preview video
 
-[![Windows 10 90's edition](https://img.youtube.com/vi/IGdZjKkt4nI/0.jpg)](https://www.youtube.com/watch?v=IGdZjKkt4nI)]
+[![Windows 10 90's edition](https://img.youtube.com/vi/IGdZjKkt4nI/0.jpg)](https://www.youtube.com/watch?v=IGdZjKkt4nI)
 
 ## Developers
 

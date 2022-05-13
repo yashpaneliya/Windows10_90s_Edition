@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:signature/signature.dart';
+import 'package:windows10_1990/main.dart';
 import 'package:windows10_1990/res/colors.dart';
 import 'package:windows10_1990/res/icons.dart';
 import 'package:windows10_1990/widgets/msdos.dart';
@@ -31,107 +32,110 @@ class _MSPaintState extends State<MSPaint> {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenheight = MediaQuery.of(context).size.height;
-    return Container(
-      width: screenWidth * 0.5,
-      height: screenheight * 0.6,
-      decoration: BoxDecoration(
-          color: startMenuBack,
-          border: Border.all(width: 5.0, color: Colors.grey)),
-      child: Stack(children: [
-        Column(
-          children: [
-            //header
-            Container(
-              color: darkBlue,
-              height: 30.0,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //title and logo
-                  Container(
-                      child: Row(
-                    children: [
-                      Image.asset('paint.png'),
-                      Text(
-                        'untitled - Paint',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: white,
-                            fontSize: 15.0),
-                      )
-                    ],
-                  )),
-                  //3 buttons
-                  Container(
-                    child: Row(
+    return Visibility(
+      visible: viewBools[7],
+      child: Container(
+        width: screenWidth * 0.5,
+        height: screenheight * 0.6,
+        decoration: BoxDecoration(
+            color: startMenuBack,
+            border: Border.all(width: 5.0, color: Colors.grey)),
+        child: Stack(children: [
+          Column(
+            children: [
+              //header
+              Container(
+                color: darkBlue,
+                height: 30.0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //title and logo
+                    Container(
+                        child: Row(
                       children: [
-                        EssentialButton(
-                          icon: Icons.minimize,
-                          onpressed: () {},
-                        ),
-                        EssentialButton(
-                            icon: Icons.crop_square, onpressed: () {}),
-                        EssentialButton(
-                          icon: Icons.close,
-                          onpressed: () {
-                            setState(() {
-                              viewBools[7] = false;
-                            });
-                          },
+                        Image.asset('paint.png'),
+                        Text(
+                          'untitled - Paint',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: white,
+                              fontSize: 15.0),
                         )
                       ],
+                    )),
+                    //3 buttons
+                    Container(
+                      child: Row(
+                        children: [
+                          EssentialButton(
+                            icon: Icons.minimize,
+                            onpressed: () {},
+                          ),
+                          EssentialButton(
+                              icon: Icons.crop_square, onpressed: () {}),
+                          EssentialButton(
+                            icon: Icons.close,
+                            onpressed: () {
+                              setState(() {
+                                viewBools[7] = false;
+                              });
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //menu
+              _buildMenuBar(),
+              //toopallete and canvas
+              Row(
+                children: [
+                  Container(
+                    color: startMenuBack,
+                    width: 100.0,
+                    height: 300.0,
+                    child: toolbar(),
+                  ),
+                  Expanded(
+                    child: Signature(
+                      height: 300.0,
+                      backgroundColor: white,
+                      controller: _controller,
                     ),
                   ),
                 ],
               ),
-            ),
-            //menu
-            _buildMenuBar(),
-            //toopallete and canvas
-            Row(
-              children: [
-                Container(
-                  color: startMenuBack,
-                  width: 100.0,
-                  height: 300.0,
-                  child: toolbar(),
-                ),
-                Expanded(
-                  child: Signature(
-                    height: 300.0,
-                    backgroundColor: white,
-                    controller: _controller,
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 5.0, right: 15.0),
-              child: Colorpallete(),
-            ),
-            Expanded(
-                child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: 5.0),
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      border: Border.all(width: 3.0, color: bordergrey),
-                      boxShadow: [
-                        BoxShadow(color: Colors.black, offset: Offset(-2, -2))
-                      ]),
-                  child: Text('For any help go to help section.'),
-                )
-              ],
-            ))
-          ],
-        ),
-        _buildFileOptions(), //all options
-        _buildEditOptions(),
-        _buildFormatOptions(),
-        _buildViewOptions(),
-        _buildHelpOptions(),
-      ]),
+              Container(
+                margin: EdgeInsets.only(left: 5.0, right: 15.0),
+                child: Colorpallete(),
+              ),
+              Expanded(
+                  child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 5.0),
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        border: Border.all(width: 3.0, color: bordergrey),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black, offset: Offset(-2, -2))
+                        ]),
+                    child: Text('For any help go to help section.'),
+                  )
+                ],
+              ))
+            ],
+          ),
+          _buildFileOptions(), //all options
+          _buildEditOptions(),
+          _buildFormatOptions(),
+          _buildViewOptions(),
+          _buildHelpOptions(),
+        ]),
+      ),
     );
   }
 

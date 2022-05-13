@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:windows10_1990/main.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
 class Notepad extends StatefulWidget {
@@ -12,56 +13,59 @@ class _NotepadState extends State<Notepad> {
   bool notepadState = true;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: 600,
-      color: Color.fromRGBO(191, 189, 189, 1),
-      child: Stack(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              _buildMenuBar(), //all details of menubar
-              Padding(
-                //white Page
-                padding: const EdgeInsets.only(top: 8, left: 20, right: 20),
-                child: Container(
-                  color: Colors.white,
-                  height: 425,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
+    return Visibility(
+      visible: viewBools[4],
+      child: Container(
+        height: 500,
+        width: 600,
+        color: Color.fromRGBO(191, 189, 189, 1),
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                _buildMenuBar(), //all details of menubar
+                Padding(
+                  //white Page
+                  padding: const EdgeInsets.only(top: 8, left: 20, right: 20),
+                  child: Container(
+                    color: Colors.white,
+                    height: 425,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                      ),
+                      minLines: 10,
+                      maxLines: 12,
+                      onTap: () {
+                        setState(() {
+                          fileState = false;
+                          editState = false;
+                          formatState = false;
+                          viewState = false;
+                          helpState = false;
+                        });
+                      },
+                      onChanged: (value) {
+                        setState(() {
+                          fileState = false;
+                          editState = false;
+                          formatState = false;
+                          viewState = false;
+                          helpState = false;
+                        });
+                      },
                     ),
-                    minLines: 10,
-                    maxLines: 12,
-                    onTap: () {
-                      setState(() {
-                        fileState = false;
-                        editState = false;
-                        formatState = false;
-                        viewState = false;
-                        helpState = false;
-                      });
-                    },
-                    onChanged: (value) {
-                      setState(() {
-                        fileState = false;
-                        editState = false;
-                        formatState = false;
-                        viewState = false;
-                        helpState = false;
-                      });
-                    },
                   ),
-                ),
-              )
-            ],
-          ),
-          _buildFileOptions(), //all options
-          _buildEditOptions(),
-          _buildFormatOptions(),
-          _buildViewOptions(),
-          _buildHelpOptions(),
-        ],
+                )
+              ],
+            ),
+            _buildFileOptions(), //all options
+            _buildEditOptions(),
+            _buildFormatOptions(),
+            _buildViewOptions(),
+            _buildHelpOptions(),
+          ],
+        ),
       ),
     );
   }

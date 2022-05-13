@@ -13,11 +13,9 @@ import 'package:windows10_1990/widgets/notepad.dart';
 import 'package:windows10_1990/widgets/properties.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
 
-bool viewClippy = false;
-bool logoBack = false;
-bool viewMenu = false;
-bool mypc = false;
-bool dosView = false;
+import 'main.dart';
+
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -65,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   child: GestureDetector(
                     onDoubleTap: () {
                       setState(() {
-                        mypc = !mypc;
+                        mypc = true;
                         viewClippy = false;
                         viewMenu = false;
                       });
@@ -75,17 +73,14 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 //start menu
-                Visibility(
-                  visible: viewMenu,
-                  child: Positioned(
-                    top: screenHeight * 0.4,
-                    left: 0.0,
-                    bottom: 10.0,
-                    child: StartMenu(
-                      width: screenWidth * 0.35,
-                      height: screenHeight * 0.7,
-                      color: startMenuBack,
-                    ),
+                Positioned(
+                  top: screenHeight * 0.4,
+                  left: 0.0,
+                  bottom: 10.0,
+                  child: StartMenu(
+                    width: screenWidth * 0.35,
+                    height: screenHeight * 0.7,
+                    color: startMenuBack,
                   ),
                 ),
                 //clippy
@@ -158,10 +153,7 @@ class _HomePageState extends State<HomePage> {
                 Positioned(
                   top:0,
                   left: 0,
-                  child: Visibility(
-                    visible: mypc,
-                    child: MyComp(),
-                  ),
+                  child: MyComp(),
                 ),
                 //properties
               Positioned(
@@ -205,9 +197,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         InkWell(
-                          onTap: () {
-                            setState(() {});
-                          },
+                          // onTap: () {
+                          //   setState(() {});
+                          // },
                           child: Container(
                             width: screenWidth * 0.3,
                             color: Colors.grey,

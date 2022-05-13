@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:windows10_1990/main.dart';
 import 'package:windows10_1990/res/colors.dart';
 import 'package:windows10_1990/widgets/msdos.dart';
 import 'package:windows10_1990/widgets/startmenu.dart';
@@ -30,133 +31,136 @@ class _MinesweaperState extends State<Minesweaper> {
     // bool b = false;
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      width: screenWidth * 0.4,
-      height: screenHeight * 0.7,
-      color: startMenuBack,
-      child: Column(
-        children: [
-          //header
-          Container(
-            color: Colors.grey,
-            height: 30.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //title and logo
-                Container(
-                    child: Row(
-                  children: [
-                    Image.asset('mine.png'),
-                    Text(
-                      'Minesweaper',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: white,
-                          fontSize: 15.0),
-                    )
-                  ],
-                )),
-                //3 buttons
-                Container(
-                  child: Row(
+    return Visibility(
+      visible: viewBools[3],
+      child: Container(
+        width: screenWidth * 0.4,
+        height: screenHeight * 0.7,
+        color: startMenuBack,
+        child: Column(
+          children: [
+            //header
+            Container(
+              color: Colors.grey,
+              height: 30.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //title and logo
+                  Container(
+                      child: Row(
                     children: [
-                      EssentialButton(
-                        icon: Icons.minimize,
-                        onpressed: () {},
-                      ),
-                      EssentialButton(
-                          icon: Icons.crop_square, onpressed: () {}),
-                      EssentialButton(
-                        icon: Icons.close,
-                        onpressed: () {
-                          setState(() {
-                            viewBools[3] = false;
-                          });
-                        },
+                      Image.asset('mine.png'),
+                      Text(
+                        'Minesweaper',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: white,
+                            fontSize: 15.0),
                       )
                     ],
+                  )),
+                  //3 buttons
+                  Container(
+                    child: Row(
+                      children: [
+                        EssentialButton(
+                          icon: Icons.minimize,
+                          onpressed: () {},
+                        ),
+                        EssentialButton(
+                            icon: Icons.crop_square, onpressed: () {}),
+                        EssentialButton(
+                          icon: Icons.close,
+                          onpressed: () {
+                            setState(() {
+                              viewBools[3] = false;
+                            });
+                          },
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          //score bar
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              scoreBoard(screenWidth, screenHeight),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          sett = !sett;
-                        });
-                      },
-                      child: centerButton(
-                          screenHeight, Icons.settings, Colors.black, sett)),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        for (int i = 0; i < 300; i++) {
-                          b[i]=false;
-                        }
-                        smile = !smile;
-                        tc.text = '0';
-                      });
-                    },
-                    child: centerButton(screenHeight,
-                        Icons.sentiment_very_satisfied, Colors.yellow, smile),
-                  ),
-                  GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          flag = !flag;
-                        });
-                      },
-                      child: centerButton(
-                          screenHeight, Icons.flag, Colors.red, flag)),
                 ],
               ),
-              scoreBoard(screenWidth, screenHeight),
-            ],
-          ),
-          //game section
-          Expanded(
-            child: GridView.builder(
-                itemCount: 300,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 20),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        b[index] = true;
-                        var temp = int.parse(tc.text);
-                        temp = temp + 1;
-                        tc.text = temp.toString();
-                      });
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: b[index] ? tilegrey : Colors.grey,
-                        border: Border.all(
-                          width: b[index] ? 1.0 : 3.0,
-                          color: b[index] ? white : Colors.grey.shade300,
+            ),
+            //score bar
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                scoreBoard(screenWidth, screenHeight),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            sett = !sett;
+                          });
+                        },
+                        child: centerButton(
+                            screenHeight, Icons.settings, Colors.black, sett)),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          for (int i = 0; i < 300; i++) {
+                            b[i]=false;
+                          }
+                          smile = !smile;
+                          tc.text = '0';
+                        });
+                      },
+                      child: centerButton(screenHeight,
+                          Icons.sentiment_very_satisfied, Colors.yellow, smile),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            flag = !flag;
+                          });
+                        },
+                        child: centerButton(
+                            screenHeight, Icons.flag, Colors.red, flag)),
+                  ],
+                ),
+                scoreBoard(screenWidth, screenHeight),
+              ],
+            ),
+            //game section
+            Expanded(
+              child: GridView.builder(
+                  itemCount: 300,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 20),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          b[index] = true;
+                          var temp = int.parse(tc.text);
+                          temp = temp + 1;
+                          tc.text = temp.toString();
+                        });
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: b[index] ? tilegrey : Colors.grey,
+                          border: Border.all(
+                            width: b[index] ? 1.0 : 3.0,
+                            color: b[index] ? white : Colors.grey.shade300,
+                          ),
+                        ),
+                        child: Text(
+                          b[index] ? '1' : ' ',
+                          style: TextStyle(color: Colors.black, fontSize: 25.0),
                         ),
                       ),
-                      child: Text(
-                        b[index] ? '1' : ' ',
-                        style: TextStyle(color: Colors.black, fontSize: 25.0),
-                      ),
-                    ),
-                  );
-                }),
-          ),
-        ],
+                    );
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
